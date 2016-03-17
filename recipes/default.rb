@@ -5,7 +5,7 @@
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
 if 'debian' == node['platform_family']
-  include "apt"
+  include_recipe "apt"
 end
 
 package 'daemon'

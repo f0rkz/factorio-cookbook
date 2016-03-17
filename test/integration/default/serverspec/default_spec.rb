@@ -1,4 +1,4 @@
-orequire 'spec_helper'
+require 'spec_helper'
 
 describe 'factrio::default' do
   # Serverspec examples can be found at
@@ -17,7 +17,6 @@ describe 'factrio::default' do
   end
 
   describe service('factorio') do
-    its(:user) { should eq 'root' }
     it { should be_enabled }
     it { should be_running }
   end
