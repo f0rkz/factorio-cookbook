@@ -1,4 +1,4 @@
-# factorio
+# factorio-cookbook
 
 ## Scope
 
@@ -12,8 +12,11 @@ This cookbook focuses building a machine for [factorio][factorio].
 
 ## Usage
 
-Either set the [default.rb](recipes/default.rb) as in your `run_list`. Or run
-`bundle exec kitchen verify` to spin up an instance of kitchen to use.
+- Run `bundle install` to install the dependencies.
+- If you would like to spin something up in Digital Ocean, use the [kitchen-digitalocean][kitchen-digitalocean] driver and configure it.
+- Either set the [default.rb](recipes/default.rb) as in your `run_list`.
+- OR
+- For digital ocean `KITCHEN_YAML=.kitchen.cloud.yml bundle exec kitchen verify` to spin up an instance.
 
 ### default.rb
 
@@ -46,3 +49,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 [factorio]: http://www.factorio.com/download-headless/stable
+[kitchen-digitalocean]: https://github.com/test-kitchen/kitchen-digitalocean
