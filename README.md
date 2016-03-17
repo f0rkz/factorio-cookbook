@@ -8,7 +8,6 @@ This cookbook focuses building a machine for [factorio][factorio].
 
 - Chef 12.0.0 or higher
 - Ubuntu 14.04 or higher
-- CentOS 6.5 or higher
 
 ## Usage
 
