@@ -2,7 +2,7 @@
 driver:
   name: vagrant
   network:
-    - ["forwarded_port", {guest: 34197, host: 34197, auto_correct: true}]
+    - ["forwarded_port", {guest: 34197, host: 34197, auto_correct: true, protocol: udp}]
   customize:
     cpus: 2
     memory: 4096

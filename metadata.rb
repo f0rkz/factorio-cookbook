@@ -6,8 +6,8 @@ description 'Installs/Configures factorio server'
 long_description 'Installs/Configures factorio server'
 version '1.0.0'
 
-supports 'ubuntu' , ">= 14.04"
-supports 'centos', ">= 7.0"
+supports 'ubuntu', '>= 14.04'
+supports 'centos', '>= 7.0'
 
 source_url 'https://github.com/jjasghar/factorio-cookbook'
 issues_url 'https://github.com/jjasghar/factorio-cookbook/issues'

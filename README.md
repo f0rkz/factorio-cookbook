@@ -1,6 +1,23 @@
 # factorio
 
-This is a cookbook that installs the [factorio](http://www.factorio.com/download-headless/stable) server.
+## Scope
+
+This cookbook focuses building a machine for [factorio][factorio].
+
+## Requirements
+
+- Chef 12.0.0 or higher
+- Ubuntu 14.04 or higher
+- CentOS 6.5 or higher
+
+## Usage
+
+Either set the [default.rb](recipes/default.rb) as in your `run_list`. Or run
+`bundle exec kitchen verify` to spin up an instance of kitchen to use.
+
+### default.rb
+
+Standard provisioning for everything you need to run factorio.
 
 ## Contributing
 1. Fork the repository on Github
@@ -28,3 +45,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+[factorio]: http://www.factorio.com/download-headless/stable
