@@ -1,0 +1,71 @@
+#!/bin/sh
+
+# This script will launch Factorio in a mode that will automatically respawn if it
+# crashes. Output will be sent to /var/log/factorio/factorio.log. A PID file will be
+# created in the standard location.
+
+start () {
+    echo -n "Starting factorio server..."
+
+    # Start daemon
+    daemon --chdir='/tmp' --command "/srv/factorio/bin/x64/factorio --start-server <%= node['factorio']['map'] %>" --respawn --output=/var/log/factorio/factorio.log --name=factorio --verbose
+
+    RETVAL=$?
+    if [ $RETVAL = 0 ]
+    then
+        echo "done."
+    else
+        echo "failed. See error code for more information."
+    fi
+    return $RETVAL
+}
+
+stop () {
+    # Stop daemon
+    echo -n "Stopping factorio..."
+
+    daemon --stop --name=factorio  --verbose
+    RETVAL=$?
+
+    if [ $RETVAL = 0 ]
+    then
+        echo "Done."
+    else
+        echo "Failed. See error code for more information."
+    fi
+    return $RETVAL
+}
+
+
+restart () {
+    daemon --restart --name=factorio  --verbose
+}
+
+
+status () {
+    # Report on the status of the daemon
+    daemon --running --verbose --name=factorio
+    return $?
+}
+
+
+case "$1" in
+    start)
+        start
+    ;;
+    status)
+        status
+    ;;
+    stop)
+        stop
+    ;;
+    restart)
+        restart
+    ;;
+    *)
+        echo $"Usage: factorio {start|status|stop|restart}"
+        exit 3
+    ;;
+esac
+
+exit $RETVAL
