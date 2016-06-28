@@ -1,5 +1,9 @@
 # Change Log
 
+1.3.0 (2016-06-28)
+
+- Bumped to the newest headless server
+
 1.1.1 (2016-03-17)
 
 - typos and errors all over the place
