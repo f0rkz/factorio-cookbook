@@ -25,6 +25,19 @@ directory '/var/log/factorio' do
   recursive true
 end
 
+# Curl the factorio download page to search for newest version
+doc = `(curl --url "#{node['factorio']['download']['url']}")`
+version_url = doc[%r{/get-download\/[\S]+\/headless\/linux64}]
+
+# If we got a proper version_url, check if there is a newer version.
+if version_url
+  version = version_url[/[0-9]+\.+[0-9]+\.+[0-9]+/]
+
+  Chef::Log.warn("You are running an old version of factorio. Specified version: #{node['factorio']['version']}. Newest version: #{version}") if Gem::Version.new(version) > Gem::Version.new(node['factorio']['version'])
+else
+  Chef::Log.warn('Failed to query version_url from curl, vendor may have changed formatting on download site.')
+end
+
 remote_file '/usr/src/factorio.tar.gz' do
   source "http://www.factorio.com/get-download/#{node['factorio']['version']}/headless/linux64"
   mode '0755'
